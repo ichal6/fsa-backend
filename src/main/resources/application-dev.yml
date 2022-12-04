@@ -4,6 +4,8 @@ spring:
     username: fsa
     password: fsa
   jpa:
-    hibernate:
-      ddl-auto: update
     show-sql: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
