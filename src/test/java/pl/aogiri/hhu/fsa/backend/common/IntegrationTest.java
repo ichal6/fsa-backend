@@ -2,6 +2,7 @@ package pl.aogiri.hhu.fsa.backend.common;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
@@ -11,9 +12,10 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @SpringBootTest
 @Testcontainers
 @Profile("integration")
+@WithMockUser
 public abstract class IntegrationTest {
     @Container
-    private static final PostgreSQLContainer container = new PostgreSQLContainer("postgres:15.1");
+    private static final PostgreSQLContainer container = new PostgreSQLContainer("postgres:14.6");
 
     @DynamicPropertySource
     static void registerMySQLProperties(DynamicPropertyRegistry registry) {
