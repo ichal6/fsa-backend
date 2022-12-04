@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://fsa-db-1.czsvju11gz4n.eu-north-1.rds.amazonaws.com/fsa
+    url: jdbc:postgresql://fsa-db-1.czsvju11gz4n.eu-north-1.rds.amazonaws.com/fsa-db-1
     username: fsa
     password: 'Fsa!!Dev123!#'
   jpa:
