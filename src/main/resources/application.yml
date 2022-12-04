@@ -8,12 +8,10 @@ spring:
     hibernate:
       ddl-auto: none
   datasource:
+    url: jdbc:postgresql://fsa-1.clbvsufdwhgu.us-east-1.rds.amazonaws.com/fsa
+    username: fsa
+    password: 'Fsa!!Dev123!#'
     driver-class-name: org.postgresql.Driver
-
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
-
 fsa:
   security:
     rsa:
