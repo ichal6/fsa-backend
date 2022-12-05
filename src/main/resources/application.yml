@@ -9,11 +9,6 @@ spring:
       ddl-auto: none
   datasource:
     driver-class-name: org.postgresql.Driver
-
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
-
 fsa:
   security:
     rsa:

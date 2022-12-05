@@ -47,7 +47,7 @@ public class SecurityConfig {
         return auth -> auth
                 .antMatchers(HttpMethod.POST, "/auth/signup").permitAll()
                 .antMatchers(HttpMethod.POST, "/auth/signin").permitAll()
-                .antMatchers(HttpMethod.GET, "/swagger-ui.html").permitAll()
+                .antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                 .anyRequest()
                 .authenticated();
