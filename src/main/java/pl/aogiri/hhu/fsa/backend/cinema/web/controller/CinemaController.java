@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import pl.aogiri.hhu.fsa.backend.cinema.application.dto.CinemaDetailsDto;
 import pl.aogiri.hhu.fsa.backend.cinema.application.dto.CinemaDto;
+import pl.aogiri.hhu.fsa.backend.cinema.application.dto.CinemaFacilityDetailsDto;
 import pl.aogiri.hhu.fsa.backend.cinema.application.dto.CinemaFacilityDto;
 import pl.aogiri.hhu.fsa.backend.cinema.exception.CinemaNotFoundException;
 
@@ -77,7 +78,7 @@ public interface CinemaController {
             value = "/{cinemaId}/facilities/{facilityId}",
             produces = {MediaType.APPLICATION_JSON_VALUE}
     )
-    default List<CinemaFacilityDto> getCinemaFacilityDetails(
+    default CinemaFacilityDetailsDto getCinemaFacilityDetails(
             @PathVariable long cinemaId, @PathVariable long facilityId
     ) {
         throw new NotImplementedException();
