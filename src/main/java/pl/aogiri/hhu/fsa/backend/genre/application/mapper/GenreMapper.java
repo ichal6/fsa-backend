@@ -1,7 +1,7 @@
-package pl.aogiri.hhu.fsa.backend.movie.application.mapper;
+package pl.aogiri.hhu.fsa.backend.genre.application.mapper;
 
-import pl.aogiri.hhu.fsa.backend.movie.application.dto.GenreDto;
-import pl.aogiri.hhu.fsa.backend.movie.domain.entity.GenreEntity;
+import pl.aogiri.hhu.fsa.backend.genre.application.dto.GenreDto;
+import pl.aogiri.hhu.fsa.backend.genre.domain.entity.GenreEntity;
 
 public class GenreMapper {
 

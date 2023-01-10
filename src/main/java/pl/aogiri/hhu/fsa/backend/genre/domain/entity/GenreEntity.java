@@ -1,4 +1,4 @@
-package pl.aogiri.hhu.fsa.backend.movie.domain.entity;
+package pl.aogiri.hhu.fsa.backend.genre.domain.entity;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;

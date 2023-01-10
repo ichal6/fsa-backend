@@ -1,6 +1,6 @@
 package pl.aogiri.hhu.fsa.backend.movie.application.mapper;
 
-import pl.aogiri.hhu.fsa.backend.movie.application.dto.GenreDto;
+import pl.aogiri.hhu.fsa.backend.genre.application.dto.GenreDto;
 
 public class GenreDtoFixture {
 

@@ -1,7 +1,7 @@
-package pl.aogiri.hhu.fsa.backend.movie.domain.repository;
+package pl.aogiri.hhu.fsa.backend.genre.domain.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.aogiri.hhu.fsa.backend.movie.domain.entity.GenreEntity;
+import pl.aogiri.hhu.fsa.backend.genre.domain.entity.GenreEntity;
 
 import java.util.List;
 

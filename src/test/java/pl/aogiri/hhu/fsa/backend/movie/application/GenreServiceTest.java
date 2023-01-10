@@ -5,11 +5,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import pl.aogiri.hhu.fsa.backend.movie.application.dto.GenreDto;
+import pl.aogiri.hhu.fsa.backend.genre.application.GenreService;
+import pl.aogiri.hhu.fsa.backend.genre.application.dto.GenreDto;
+import pl.aogiri.hhu.fsa.backend.genre.domain.entity.GenreEntity;
+import pl.aogiri.hhu.fsa.backend.genre.domain.repository.GenreRepository;
 import pl.aogiri.hhu.fsa.backend.movie.application.mapper.GenreDtoFixture;
 import pl.aogiri.hhu.fsa.backend.movie.application.mapper.GenreEntityFixture;
-import pl.aogiri.hhu.fsa.backend.movie.domain.entity.GenreEntity;
-import pl.aogiri.hhu.fsa.backend.movie.domain.repository.GenreRepository;
 
 import java.util.List;
 

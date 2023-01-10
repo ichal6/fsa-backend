@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.aogiri.hhu.fsa.backend.movie.application.MovieService;
 import pl.aogiri.hhu.fsa.backend.movie.application.dto.MovieDetailsDto;
 import pl.aogiri.hhu.fsa.backend.movie.application.dto.MovieDto;
-import pl.aogiri.hhu.fsa.backend.movie.application.request.AddMovieRequest;
-import pl.aogiri.hhu.fsa.backend.movie.domain.entity.MovieEntity;
 import pl.aogiri.hhu.fsa.backend.movie.application.dto.MovieFilterDto;
+import pl.aogiri.hhu.fsa.backend.movie.application.dto.request.AddMovieRequest;
+import pl.aogiri.hhu.fsa.backend.movie.domain.entity.MovieEntity;
 
 import java.util.List;
 

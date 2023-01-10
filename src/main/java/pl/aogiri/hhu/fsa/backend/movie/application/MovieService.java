@@ -2,17 +2,16 @@ package pl.aogiri.hhu.fsa.backend.movie.application;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.aogiri.hhu.fsa.backend.genre.domain.entity.GenreEntity;
+import pl.aogiri.hhu.fsa.backend.genre.domain.repository.GenreRepository;
 import pl.aogiri.hhu.fsa.backend.movie.application.dto.MovieDetailsDto;
 import pl.aogiri.hhu.fsa.backend.movie.application.dto.MovieDto;
 import pl.aogiri.hhu.fsa.backend.movie.application.dto.MovieFilterDto;
+import pl.aogiri.hhu.fsa.backend.movie.application.dto.request.AddMovieRequest;
 import pl.aogiri.hhu.fsa.backend.movie.application.mapper.MovieDetailsMapper;
 import pl.aogiri.hhu.fsa.backend.movie.application.mapper.MovieMapper;
-import pl.aogiri.hhu.fsa.backend.movie.domain.entity.GenreEntity;
 import pl.aogiri.hhu.fsa.backend.movie.domain.entity.MovieEntity;
 import pl.aogiri.hhu.fsa.backend.movie.domain.entity.ScoreEntity;
-import pl.aogiri.hhu.fsa.backend.movie.application.request.AddMovieRequest;
-import pl.aogiri.hhu.fsa.backend.movie.domain.entity.MovieEntity;
-import pl.aogiri.hhu.fsa.backend.movie.domain.repository.GenreRepository;
 import pl.aogiri.hhu.fsa.backend.movie.domain.repository.MovieRepository;
 import pl.aogiri.hhu.fsa.backend.movie.exception.MovieNotFoundException;
 

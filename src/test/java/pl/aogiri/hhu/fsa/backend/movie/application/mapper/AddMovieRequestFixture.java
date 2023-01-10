@@ -1,6 +1,6 @@
 package pl.aogiri.hhu.fsa.backend.movie.application.mapper;
 
-import pl.aogiri.hhu.fsa.backend.movie.application.request.AddMovieRequest;
+import pl.aogiri.hhu.fsa.backend.movie.application.dto.request.AddMovieRequest;
 
 import java.time.LocalDate;
 import java.util.List;

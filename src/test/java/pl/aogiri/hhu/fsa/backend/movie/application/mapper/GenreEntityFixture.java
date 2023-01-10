@@ -1,6 +1,6 @@
 package pl.aogiri.hhu.fsa.backend.movie.application.mapper;
 
-import pl.aogiri.hhu.fsa.backend.movie.domain.entity.GenreEntity;
+import pl.aogiri.hhu.fsa.backend.genre.domain.entity.GenreEntity;
 
 public class GenreEntityFixture {
 
