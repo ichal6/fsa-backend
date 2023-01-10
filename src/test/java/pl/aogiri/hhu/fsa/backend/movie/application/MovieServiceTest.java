@@ -6,6 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pl.aogiri.hhu.fsa.backend.movie.application.dto.MovieDto;
+import pl.aogiri.hhu.fsa.backend.movie.application.dto.MovieFilterDto;
 import pl.aogiri.hhu.fsa.backend.movie.application.mapper.MovieEntityFixture;
 import pl.aogiri.hhu.fsa.backend.movie.domain.repository.MovieRepository;
 import pl.aogiri.hhu.fsa.backend.movie.exception.MovieNotFoundException;
@@ -78,21 +79,89 @@ class MovieServiceTest {
         assertThat(exception.getMessage()).isEqualTo(format("Movie with id %d not found", movieId));
     }
 
-
     @Test
-    void shouldFindMovies() {
+    void shouldReturnMoviesByDirectorFilter() {
         //given
-        final var movies = List.of(MovieEntityFixture.theIncredibles());
+        final var movies = List.of(MovieEntityFixture.theIncredibles(), MovieEntityFixture.theShawshankRedemption());
+        final var criteria = new MovieFilterDto();
+        criteria.setDirector(List.of("Frank Darabont"));
 
-        given(movieRepository.findByTitleContainingIgnoreCase("Incredibles")).willReturn(movies);
+        given(movieRepository.findAll()).willReturn(movies);
 
         //when
-        final List<MovieDto> actualAllMovies = movieService.findMovies("Incredibles");
+        final List<MovieDto> actualAllMovies = movieService.getMoviesByCriteria(criteria);
 
         //then
         assertThat(actualAllMovies)
                 .hasSize(1)
                 .containsExactlyInAnyOrder(
+                        MovieDtoFixture.theShawshankRedemption()
+                );
+    }
+
+    @Test
+    void shouldReturnMoviesByYear() {
+        //given
+        final var movies = List.of(MovieEntityFixture.theIncredibles(), MovieEntityFixture.theShawshankRedemption());
+        final var criteria = new MovieFilterDto();
+        criteria.setYear(List.of(2004));
+
+        given(movieRepository.findAll()).willReturn(movies);
+
+        //when
+        final List<MovieDto> actualAllMovies = movieService.getMoviesByCriteria(criteria);
+
+        //then
+        assertThat(actualAllMovies)
+                .hasSize(1)
+                .containsExactlyInAnyOrder(
+                        MovieDtoFixture.theIncredibles()
+                );
+    }
+
+    @Test
+    void shouldReturnMoviesByCountry() {
+        //given
+        final var movies = List.of(MovieEntityFixture.theIncredibles(),
+                MovieEntityFixture.theShawshankRedemption(),
+                MovieEntityFixture.avatarTheWayOfWater());
+        final var criteria = new MovieFilterDto();
+        criteria.setCountry(List.of("USA"));
+
+        given(movieRepository.findAll()).willReturn(movies);
+
+        //when
+        final List<MovieDto> actualAllMovies = movieService.getMoviesByCriteria(criteria);
+
+        //then
+        assertThat(actualAllMovies)
+                .hasSize(3)
+                .containsExactly(
+                        MovieDtoFixture.avatarTheWayOfWater(),
+                        MovieDtoFixture.theIncredibles(),
+                        MovieDtoFixture.theShawshankRedemption()
+                );
+    }
+
+    @Test
+    void shouldReturnMoviesByGenres() {
+        //given
+        final var movies = List.of(MovieEntityFixture.theIncredibles(),
+                MovieEntityFixture.theShawshankRedemption(),
+                MovieEntityFixture.avatarTheWayOfWater());
+        final var criteria = new MovieFilterDto();
+        criteria.setGenre(List.of("Comedy", "Fantasy"));
+
+        given(movieRepository.findAll()).willReturn(movies);
+
+        //when
+        final List<MovieDto> actualAllMovies = movieService.getMoviesByCriteria(criteria);
+
+        //then
+        assertThat(actualAllMovies)
+                .hasSize(2)
+                .containsExactly(
+                        MovieDtoFixture.avatarTheWayOfWater(),
                         MovieDtoFixture.theIncredibles()
                 );
     }
