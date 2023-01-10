@@ -2,6 +2,7 @@ package pl.aogiri.hhu.fsa.backend.movie.application.mapper;
 
 import org.apache.commons.lang3.StringUtils;
 import pl.aogiri.hhu.fsa.backend.movie.application.dto.MovieDto;
+import pl.aogiri.hhu.fsa.backend.movie.application.request.AddMovieRequest;
 import pl.aogiri.hhu.fsa.backend.movie.domain.entity.GenreEntity;
 import pl.aogiri.hhu.fsa.backend.movie.domain.entity.MovieEntity;
 import pl.aogiri.hhu.fsa.backend.movie.domain.entity.ScoreEntity;
@@ -20,6 +21,18 @@ public class MovieMapper {
         movieDto.setShortDescription(StringUtils.abbreviate(movieEntity.getDescription(), 114));
         movieDto.setGenres(getNamesOfGeneres(movieEntity));
         return movieDto;
+    }
+
+    public static MovieEntity toEntity(AddMovieRequest addMovieRequest, List<GenreEntity> genres) {
+        final var movieEntity = new MovieEntity();
+        movieEntity.setTitle(addMovieRequest.getTitle());
+        movieEntity.setDescription(addMovieRequest.getDescription());
+        movieEntity.setGenres(genres);
+        movieEntity.setDurationInMinutes(addMovieRequest.getDuration());
+        movieEntity.setReleaseDate(addMovieRequest.getReleaseDate());
+        movieEntity.setProductionCountry(addMovieRequest.getProductionCountry());
+        movieEntity.setDirector(addMovieRequest.getDirector());
+        return movieEntity;
     }
 
     private static BigDecimal averageOfScores(List<ScoreEntity> scores) {

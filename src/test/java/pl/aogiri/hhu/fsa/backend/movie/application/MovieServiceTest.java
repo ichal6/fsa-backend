@@ -7,7 +7,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pl.aogiri.hhu.fsa.backend.movie.application.dto.MovieDto;
 import pl.aogiri.hhu.fsa.backend.movie.application.dto.MovieFilterDto;
+import pl.aogiri.hhu.fsa.backend.movie.application.mapper.AddMovieRequestFixture;
+import pl.aogiri.hhu.fsa.backend.movie.application.mapper.GenreEntityFixture;
 import pl.aogiri.hhu.fsa.backend.movie.application.mapper.MovieEntityFixture;
+import pl.aogiri.hhu.fsa.backend.movie.domain.repository.GenreRepository;
 import pl.aogiri.hhu.fsa.backend.movie.domain.repository.MovieRepository;
 import pl.aogiri.hhu.fsa.backend.movie.exception.MovieNotFoundException;
 import pl.aogiri.hhu.fsa.backend.movie.web.controller.MovieDetailsDtoFixture;
@@ -19,13 +22,19 @@ import java.util.Optional;
 import static java.lang.String.format;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
+
 
 @ExtendWith(MockitoExtension.class)
 class MovieServiceTest {
 
     @Mock
     private MovieRepository movieRepository;
+
+    @Mock
+    private GenreRepository genreRepository;
 
     @InjectMocks
     private MovieService movieService;
@@ -164,5 +173,23 @@ class MovieServiceTest {
                         MovieDtoFixture.avatarTheWayOfWater(),
                         MovieDtoFixture.theIncredibles()
                 );
+    }
+
+    @Test
+    void shouldAddNewMovieForCorrectDto() {
+        //given
+        final var givenMovie = AddMovieRequestFixture.theIncredibles();
+        final var expectedMovie = MovieEntityFixture.theIncrediblesWithoutScores();
+        final var expectedGenres = List.of(GenreEntityFixture.action(), GenreEntityFixture.comedy());
+
+        given(movieRepository.save(any())).willReturn(expectedMovie);
+        given(genreRepository.findAllByIdIn(any())).willReturn(expectedGenres);
+
+        //when
+        final var actual = movieService.addMovie(givenMovie);
+
+        //then
+        verify(movieRepository).save(expectedMovie);
+        assertThat(actual).isEqualTo(expectedMovie);
     }
 }
