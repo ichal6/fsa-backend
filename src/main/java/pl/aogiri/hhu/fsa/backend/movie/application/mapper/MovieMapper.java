@@ -1,9 +1,9 @@
 package pl.aogiri.hhu.fsa.backend.movie.application.mapper;
 
 import org.apache.commons.lang3.StringUtils;
+import pl.aogiri.hhu.fsa.backend.genre.domain.entity.GenreEntity;
 import pl.aogiri.hhu.fsa.backend.movie.application.dto.MovieDto;
-import pl.aogiri.hhu.fsa.backend.movie.application.request.AddMovieRequest;
-import pl.aogiri.hhu.fsa.backend.movie.domain.entity.GenreEntity;
+import pl.aogiri.hhu.fsa.backend.movie.application.dto.request.AddMovieRequest;
 import pl.aogiri.hhu.fsa.backend.movie.domain.entity.MovieEntity;
 import pl.aogiri.hhu.fsa.backend.movie.domain.entity.ScoreEntity;
 

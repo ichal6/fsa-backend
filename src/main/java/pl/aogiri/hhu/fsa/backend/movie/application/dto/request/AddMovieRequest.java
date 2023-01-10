@@ -1,4 +1,4 @@
-package pl.aogiri.hhu.fsa.backend.movie.application.request;
+package pl.aogiri.hhu.fsa.backend.movie.application.dto.request;
 
 import lombok.Data;
 

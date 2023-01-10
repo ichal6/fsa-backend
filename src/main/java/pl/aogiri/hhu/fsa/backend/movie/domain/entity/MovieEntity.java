@@ -4,6 +4,7 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.Length;
+import pl.aogiri.hhu.fsa.backend.genre.domain.entity.GenreEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

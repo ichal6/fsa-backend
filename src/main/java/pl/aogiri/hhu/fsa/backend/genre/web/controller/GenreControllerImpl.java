@@ -1,9 +1,9 @@
-package pl.aogiri.hhu.fsa.backend.movie.web.controller;
+package pl.aogiri.hhu.fsa.backend.genre.web.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
-import pl.aogiri.hhu.fsa.backend.movie.application.GenreService;
-import pl.aogiri.hhu.fsa.backend.movie.application.dto.GenreDto;
+import pl.aogiri.hhu.fsa.backend.genre.application.GenreService;
+import pl.aogiri.hhu.fsa.backend.genre.application.dto.GenreDto;
 
 import java.util.List;
 

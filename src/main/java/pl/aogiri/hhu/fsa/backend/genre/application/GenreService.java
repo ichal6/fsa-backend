@@ -1,11 +1,11 @@
-package pl.aogiri.hhu.fsa.backend.movie.application;
+package pl.aogiri.hhu.fsa.backend.genre.application;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.aogiri.hhu.fsa.backend.movie.application.dto.GenreDto;
-import pl.aogiri.hhu.fsa.backend.movie.application.mapper.GenreMapper;
-import pl.aogiri.hhu.fsa.backend.movie.domain.entity.GenreEntity;
-import pl.aogiri.hhu.fsa.backend.movie.domain.repository.GenreRepository;
+import pl.aogiri.hhu.fsa.backend.genre.application.dto.GenreDto;
+import pl.aogiri.hhu.fsa.backend.genre.application.mapper.GenreMapper;
+import pl.aogiri.hhu.fsa.backend.genre.domain.entity.GenreEntity;
+import pl.aogiri.hhu.fsa.backend.genre.domain.repository.GenreRepository;
 
 import java.util.List;
 
