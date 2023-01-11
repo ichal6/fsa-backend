@@ -21,7 +21,6 @@ public class CinemaMapper {
         final var cinemaEntity = new CinemaEntity();
         cinemaEntity.setName(addCinemaRequest.getName());
         cinemaEntity.setUrl(addCinemaRequest.getAddress());
-        cinemaEntity.setUpdated(Timestamp.from(Instant.now()));
         return cinemaEntity;
     }
 }
