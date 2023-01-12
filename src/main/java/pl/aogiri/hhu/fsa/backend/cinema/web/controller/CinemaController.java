@@ -107,7 +107,7 @@ public interface CinemaController {
 
     @Operation(summary = "Add a cinema facility")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Cinema fcility added successfully"),
+            @ApiResponse(responseCode = "201", description = "Cinema facility added successfully"),
             @ApiResponse(responseCode = "400", description = "Requested data are incorrect"),
             @ApiResponse(responseCode = "500", description = "Error occurred when adding a cinema")
     })
