@@ -45,6 +45,7 @@ dependencies {
     testImplementation 'org.testcontainers:postgresql'
 
     testImplementation 'io.rest-assured:rest-assured:4.5.1'
+
 }
 
 dependencyManagement {

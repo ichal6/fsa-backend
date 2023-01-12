@@ -10,11 +10,13 @@ import pl.aogiri.hhu.fsa.backend.showtime.application.mapper.ShowtimeMapper;
 import pl.aogiri.hhu.fsa.backend.showtime.domain.entity.ShowtimeEntity;
 import pl.aogiri.hhu.fsa.backend.showtime.domain.repository.ShowtimeRepository;
 import pl.aogiri.hhu.fsa.backend.showtime.exception.ShowtimeNotFoundException;
+import pl.aogiri.hhu.fsa.backend.showtime.application.dto.ShowtimeCriteriaRequest;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
 public class ShowtimeService {
-
     private final ShowtimeRepository showtimeRepository;
     private final MovieRepository movieRepository;
     private final CinemaFacilityRepository cinemaFacilityRepository;
@@ -23,6 +25,13 @@ public class ShowtimeService {
         return showtimeRepository.findById(showtimeId)
                 .map(ShowtimeMapper::toDto)
                 .orElseThrow(() -> new ShowtimeNotFoundException(showtimeId));
+    }
+
+    public List<ShowtimeDto> getShowtimes(ShowtimeCriteriaRequest showtimeCriteriaRequest) {
+        return showtimeRepository.findAll()
+                .stream()
+                .map(ShowtimeMapper::toDto)
+                .toList();
     }
 
     public ShowtimeEntity addShowtime(AddShowtimeRequest addShowtimeRequest) {
