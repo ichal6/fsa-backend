@@ -11,4 +11,11 @@ public class GenreMapper {
         genreDto.setName(genreEntity.getName());
         return genreDto;
     }
+
+    public static GenreEntity toEntity(GenreDto genreDto) {
+        final var genreEntity = new GenreEntity();
+        genreEntity.setId(genreDto.getId());
+        genreEntity.setName(genreDto.getName());
+        return genreEntity;
+    }
 }
