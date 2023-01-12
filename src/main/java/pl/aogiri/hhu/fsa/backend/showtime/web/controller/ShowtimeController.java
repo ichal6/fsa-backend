@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pl.aogiri.hhu.fsa.backend.movie.application.dto.MovieDto;
 import pl.aogiri.hhu.fsa.backend.showtime.application.dto.ShowtimeCriteriaRequest;
 import pl.aogiri.hhu.fsa.backend.showtime.application.dto.ShowtimeDto;
 import pl.aogiri.hhu.fsa.backend.showtime.application.dto.request.AddShowtimeRequest;
@@ -39,14 +38,14 @@ public interface ShowtimeController {
         throw new NotImplementedException();
     }
 
-    @Operation(summary = "Get all showtimes for cinema facility")
+    @Operation(summary = "Get all showtimes fulfilling provided criteria")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful operation")
     })
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
-    default List<MovieDto> getShowtimesByCriteria(ShowtimeCriteriaRequest showtimeCriteriaRequest) {
+    default List<ShowtimeDto> getShowtimesByCriteria(ShowtimeCriteriaRequest showtimeCriteriaRequest) {
         throw new NotImplementedException();
     }
 
