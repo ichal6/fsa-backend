@@ -5,6 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import pl.aogiri.hhu.fsa.backend.genre.application.GenreService;
 import pl.aogiri.hhu.fsa.backend.genre.domain.repository.GenreRepository;
 import pl.aogiri.hhu.fsa.backend.movie.application.dto.MovieDto;
 import pl.aogiri.hhu.fsa.backend.movie.application.dto.MovieFilterDto;
@@ -36,8 +37,12 @@ class MovieServiceTest {
     @Mock
     private GenreRepository genreRepository;
 
+    @Mock
+    private GenreService genreService;
+
     @InjectMocks
     private MovieService movieService;
+
 
     @Test
     void shouldReturnAllMovies() {
@@ -284,9 +289,8 @@ class MovieServiceTest {
 
         final var expectedGenres = List.of(GenreEntityFixture.action());
 
-        given(movieRepository.existsById(updatedMovieId)).willReturn(true);
-        given(movieRepository.getReferenceById(updatedMovieId)).willReturn(MovieEntityFixture.theIncredibles());
-        given(genreRepository.findAllByIdIn(any())).willReturn(expectedGenres);
+        given(movieRepository.findById(updatedMovieId)).willReturn(Optional.of(expectedMovie));
+        given(genreService.getAllGenresForIds(any())).willReturn(expectedGenres);
         given(movieRepository.save(any())).willReturn(expectedMovie);
 
         //when
