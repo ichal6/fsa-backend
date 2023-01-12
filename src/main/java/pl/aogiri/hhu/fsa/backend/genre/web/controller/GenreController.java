@@ -48,7 +48,7 @@ public interface GenreController {
             produces = {MediaType.APPLICATION_JSON_VALUE}
     )
     @PreAuthorize("hasRole('GENRE_EDIT')")
-    default GenreEntity addGenre(@RequestBody GenreDto genreDto) {
+    default GenreEntity editGenre(@RequestBody GenreDto genreDto) {
         throw new NotImplementedException();
     }
 }

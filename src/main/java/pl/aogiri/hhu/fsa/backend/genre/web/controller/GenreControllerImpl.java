@@ -20,7 +20,7 @@ public class GenreControllerImpl implements GenreController {
     }
 
     @Override
-    public GenreEntity addGenre(@RequestBody GenreDto genreDto) {
+    public GenreEntity editGenre(@RequestBody GenreDto genreDto) {
         return genreService.editGenre(genreDto);
     }
 }
