@@ -6,7 +6,6 @@ import lombok.Data;
 public class AddCinemaFacilityRequest {
 
     private String name;
-
     private String description;
     private String address;
     private String telephone;
