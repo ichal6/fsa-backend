@@ -73,6 +73,7 @@ public interface MovieController {
     @Operation(summary = "Update movie in database")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Successful updated movie"),
+            @ApiResponse(responseCode = "400", description = "Requested data are incorrect"),
             @ApiResponse(responseCode = "404", description = "Movie not found"),
             @ApiResponse(responseCode = "500", description = "Error occurred when trying to update movie")
     })
