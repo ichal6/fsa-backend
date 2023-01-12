@@ -7,11 +7,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 import pl.aogiri.hhu.fsa.backend.genre.application.dto.GenreDto;
+import pl.aogiri.hhu.fsa.backend.genre.domain.entity.GenreEntity;
 
 import java.util.List;
 
@@ -33,6 +32,23 @@ public interface GenreController {
             produces = {MediaType.APPLICATION_JSON_VALUE}
     )
     default List<GenreDto> getGenres() {
+        throw new NotImplementedException();
+    }
+
+    @Operation(summary = "Edit genre")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Genre updated successfully"),
+            @ApiResponse(responseCode = "400", description = "Requested data are incorrect"),
+            @ApiResponse(responseCode = "500", description = "Error occurred when adding a cinema")
+    })
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseBody
+    @PutMapping(
+            value = "",
+            produces = {MediaType.APPLICATION_JSON_VALUE}
+    )
+    @PreAuthorize("hasRole('GENRE_EDIT')")
+    default GenreEntity addGenre(@RequestBody GenreDto genreDto) {
         throw new NotImplementedException();
     }
 }
