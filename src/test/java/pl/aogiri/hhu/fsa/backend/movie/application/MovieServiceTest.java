@@ -271,4 +271,29 @@ class MovieServiceTest {
         //then
         assertThat(exception.getMessage()).isEqualTo(format("Movie with id %d not found", movieId));
     }
+
+    @Test
+    void shouldUpdateMovieForCorrectMovieId() {
+        //given
+        final var updatedMovieId = 1L;
+        final var updatedMovie = AddMovieRequestFixture.theIncredibles();
+        updatedMovie.setGenres(List.of(1L));
+
+        final var expectedMovie = MovieEntityFixture.theIncredibles();
+        expectedMovie.setGenres(List.of(GenreEntityFixture.action()));
+
+        final var expectedGenres = List.of(GenreEntityFixture.action());
+
+        given(movieRepository.existsById(updatedMovieId)).willReturn(true);
+        given(movieRepository.getReferenceById(updatedMovieId)).willReturn(MovieEntityFixture.theIncredibles());
+        given(genreRepository.findAllByIdIn(any())).willReturn(expectedGenres);
+        given(movieRepository.save(any())).willReturn(expectedMovie);
+
+        //when
+        final var actual = movieService.updateMovie(updatedMovieId, updatedMovie);
+
+        //then
+        verify(movieRepository).save(expectedMovie);
+        assertThat(actual).isEqualTo(expectedMovie);
+    }
 }

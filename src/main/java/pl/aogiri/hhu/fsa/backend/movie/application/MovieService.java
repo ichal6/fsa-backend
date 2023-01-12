@@ -75,6 +75,26 @@ public class MovieService {
         return movieRepository.save(movieEntity);
     }
 
+    public MovieEntity updateMovie(Long movieId, AddMovieRequest addMovieRequest) {
+        if (!movieRepository.existsById(movieId)) {
+            throw new MovieNotFoundException(movieId);
+        }
+
+        final var movieEntityToUpdate = movieRepository.getReferenceById(movieId);
+        final var requestedGenres = addMovieRequest.getGenres();
+        final var getGenresById = genreRepository.findAllByIdIn(requestedGenres);
+
+        if (getGenresById.size() != requestedGenres.size()) {
+            throw new IllegalArgumentException("Provided genres are incorrect");
+        }
+
+        final var updatedMovieEntity = MovieMapper.toEntity(addMovieRequest, getGenresById);
+        updatedMovieEntity.setId(movieEntityToUpdate.getId());
+        updatedMovieEntity.setScores(movieEntityToUpdate.getScores());
+
+        return movieRepository.save(updatedMovieEntity);
+    }
+
     public void deleteMovie(Long movieId) {
         if (!movieRepository.existsById(movieId)) {
             throw new MovieNotFoundException(movieId);
