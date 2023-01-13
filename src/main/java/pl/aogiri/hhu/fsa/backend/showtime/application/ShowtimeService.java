@@ -11,6 +11,9 @@ import pl.aogiri.hhu.fsa.backend.showtime.application.mapper.ShowtimeMapper;
 import pl.aogiri.hhu.fsa.backend.showtime.domain.entity.ShowtimeEntity;
 import pl.aogiri.hhu.fsa.backend.showtime.domain.repository.ShowtimeRepository;
 import pl.aogiri.hhu.fsa.backend.showtime.exception.ShowtimeNotFoundException;
+import pl.aogiri.hhu.fsa.backend.showtime.application.dto.ShowtimeCriteriaRequest;
+
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -26,7 +29,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class ShowtimeService {
-
     private final ShowtimeRepository showtimeRepository;
     private final MovieRepository movieRepository;
     private final CinemaFacilityRepository cinemaFacilityRepository;
@@ -69,12 +71,8 @@ public class ShowtimeService {
 
         return entityManager.createQuery(criteriaQuery)
                 .getResultList()
-                .stream()
-                .map(ShowtimeMapper::toDto)
-                .toList();
     }
-
-
+    
     public ShowtimeEntity addShowtime(AddShowtimeRequest addShowtimeRequest) {
         final var movie = movieRepository.findById(addShowtimeRequest.getMovieId());
         final var cinemaFacility = cinemaFacilityRepository.findById(addShowtimeRequest.getCinemaFacilityId());
