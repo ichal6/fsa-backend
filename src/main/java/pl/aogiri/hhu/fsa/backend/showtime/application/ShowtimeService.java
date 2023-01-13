@@ -11,9 +11,6 @@ import pl.aogiri.hhu.fsa.backend.showtime.application.mapper.ShowtimeMapper;
 import pl.aogiri.hhu.fsa.backend.showtime.domain.entity.ShowtimeEntity;
 import pl.aogiri.hhu.fsa.backend.showtime.domain.repository.ShowtimeRepository;
 import pl.aogiri.hhu.fsa.backend.showtime.exception.ShowtimeNotFoundException;
-import pl.aogiri.hhu.fsa.backend.showtime.application.dto.ShowtimeCriteriaRequest;
-
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -58,7 +55,7 @@ public class ShowtimeService {
         else if (request.getToDate() != null)
             predicates.add(criteriaBuilder.lessThan(showtimeRoot.get("datetime"), request.getToDate()));
         else
-            predicates.add(criteriaBuilder.between(showtimeRoot.get("datetime"), LocalDateTime.of(LocalDate.now(), LocalTime.MIDNIGHT), LocalDateTime.of(LocalDate.now(), LocalTime.MAX)));
+            predicates.add(criteriaBuilder.greaterThan(showtimeRoot.get("datetime"), LocalDateTime.of(LocalDate.now(), LocalTime.MIDNIGHT)));
 
         if (request.getShowtimeVideoType() != null)
             predicates.add(criteriaBuilder.equal(showtimeRoot.get("videoType"), request.getShowtimeVideoType()));
