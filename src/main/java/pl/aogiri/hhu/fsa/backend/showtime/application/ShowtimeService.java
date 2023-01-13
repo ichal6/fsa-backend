@@ -70,7 +70,10 @@ public class ShowtimeService {
         criteriaQuery.where(predicates.toArray(new Predicate[0]));
 
         return entityManager.createQuery(criteriaQuery)
-                .getResultList();
+                .getResultList()
+                .stream()
+                .map(ShowtimeMapper::toDto)
+                .toList();
     }
     
     public ShowtimeEntity addShowtime(AddShowtimeRequest addShowtimeRequest) {
